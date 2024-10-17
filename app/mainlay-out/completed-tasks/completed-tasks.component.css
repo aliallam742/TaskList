@@ -1,0 +1,11 @@
+.table-header {
+    text-align: center;
+    margin-bottom: 16px;
+    font-size: 24px;
+    padding: 10px;
+    font-weight: bold;
+}
+
+th {
+    text-align: center;
+}

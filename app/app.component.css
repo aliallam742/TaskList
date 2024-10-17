@@ -1,0 +1,15 @@
+:root {
+    --background: #CCC;
+    --color: #000;
+
+}
+
+.darck-mode {
+    --background: #000;
+    --color: #ccc;
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+}

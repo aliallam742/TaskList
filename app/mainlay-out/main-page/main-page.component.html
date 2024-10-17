@@ -1,0 +1,7 @@
+<div class="card">
+    <ul class="card-list">
+        @for (list of lists; track list.id) {
+        <li [routerLink]="list.router">{{list.title}}</li>
+        }
+    </ul>
+</div>

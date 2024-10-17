@@ -1,0 +1,25 @@
+<div class="dialog">
+    <mat-card class="example-card " appearance="outlined">
+        <mat-card-header class="text-center d-flex align-items-center justify-content-center ">
+            <mat-card-title>Task Details</mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="pt-3">
+                <p><b>Task name : </b> <span> {{taskData.taskName}}</span> </p>
+                <p><b>Task Details : </b><span class="text-wrap w-25">{{taskData.taskDescription}}
+                    </span>
+                </p>
+                <p><b>Date : </b> <span>{{taskData.date| date}}</span></p>
+                <p><b>Task Status : </b> <span>{{taskStatis}}</span></p>
+
+            </div>
+        </mat-card-content>
+        <mat-card-footer class="example-card-footer">
+        </mat-card-footer>
+        <mat-dialog-actions align="end">
+            <button class="custom-btn mx-2" mat-button mat-dialog-close>Cancel</button>
+            <button class="btn  btn-info text-white rounded-3" (click)="submitComplete($event,taskData)"
+                [disabled]="taskStatis === 'completed'" [mat-dialog-close]="true" cdkFocusInitial>{{btnText}}</button>
+        </mat-dialog-actions>
+    </mat-card>
+</div>

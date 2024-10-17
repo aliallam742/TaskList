@@ -1,0 +1,66 @@
+<div class="card">
+    <div>
+        <h2 class="text-center">Create Task</h2>
+    </div>
+    <form #createForm="ngForm">
+        <mat-form-field appearance="outline" class="example-full-width  ">
+            <mat-label>Task Name</mat-label>
+            <div class="d-flex align-items-center  px-2 ">
+
+                <input #name="ngModel" minlength="3" [ngModel]="data?.taskName" matInput required
+                    placeholder="write task name" ngModel name="taskName" value="">
+                <mat-icon matSuffix *ngIf="name.invalid || !name.touched" class="fa fa-tasks fs-5"
+                    [class.text-danger]="name.invalid&& name.touched"></mat-icon>
+                <mat-icon matSuffix *ngIf="!name.invalid&& name.touched"
+                    class="fa fa-check fs-4 text-success"></mat-icon>
+            </div>
+            @if(name.errors?.['required'] && name.touched){
+            <mat-error>this Field is required</mat-error>
+
+            }
+            @if (name.errors?.['minlength'] ) {
+            <mat-error>Minimum length is {{name.errors!['minlength'].requiredLength }} Letters </mat-error>
+
+            }
+
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Task Description </mat-label>
+            <div class=" d-flex align-items-center  px-3">
+                <textarea matInput required minlength="6" [ngModel]="data?.taskDescription" cdkTextareaAutosize
+                    #autosize="cdkTextareaAutosize" cdkAutosizeMinRows="1" cdkAutosizeMaxRows="5" #desc="ngModel"
+                    placeholder="Write what you want to do" ngModel name="taskDescription"></textarea>
+                <mat-icon matSuffix *ngIf="!desc.invalid&& desc.touched"
+                    class="fa fa-check fs-4 text-success"></mat-icon>
+            </div>
+            @if(desc.errors?.['required'] && desc.touched){
+            <mat-error>this Field is required</mat-error>
+
+            }
+            @if (desc.errors?.['minlength'] ) {
+            <mat-error>Minimum length is {{desc.errors!['minlength'].requiredLength }} Letters </mat-error>
+
+            }
+        </mat-form-field>
+        <mat-form-field appearance="outline" class="example-full-width">
+            <mat-label>Date</mat-label>
+            <input matInput required [matDatepicker]="picker" [ngModel]="data?.date" #date="ngModel" name="date"
+                placeholder="Select a date">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+            @if(date?.errors?.['required'] && date?.touched){
+            <mat-error>this Field is required</mat-error>
+
+            }
+        </mat-form-field>
+
+        <input type="text" class="d-none" [ngModel]="false" name="completed">
+        <div class="example-button-container example-full-width">
+            <a mat-fab extended (click)="login(createForm)">
+                <i [class]="btnIcon"></i>
+                {{btnText}}
+            </a>
+        </div>
+    </form>
+</div>
